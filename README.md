@@ -176,13 +176,14 @@ public class ProductsServlet extends HttpServlet {
         <title>Product List</title>
     </head>
     <body>
-        <table border="1">
+        <h2>Product Inventory</h2>
+        <table border="1" cellpadding="5">
             <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Quantity</th>
-            </tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th> </tr>
             
             <c:forEach var="product" items="${listProduct}">
                 <tr>
@@ -190,10 +191,15 @@ public class ProductsServlet extends HttpServlet {
                     <td>${product.name}</td>
                     <td>${product.price}</td>
                     <td>${product.quantity}</td>
-                    
+                    <td>
+                        <a href="ProductsServlet?action=update&id=${product.id}">Update</a> | 
+                        <a href="ProductsServlet?action=delete&id=${product.id}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
+        <br>
+        <a href="insertProduct.jsp">Add New Product</a>
     </body>
 </html>
 
@@ -257,11 +263,11 @@ public class Product {
         this.quantity= quantity;
     }
     
-    public int getID(){
+    public int getId(){
         return id;
     }
     
-    public void setID(int id){
+    public void setId(int id){
         this.id=id;
     }
     
