@@ -160,5 +160,69 @@ public class ProductsServlet extends HttpServlet {
     }
 
 }
+
+
+
+
+
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri= "http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Product List</title>
+    </head>
+    <body>
+        <table border="1">
+            <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            </tr>
+            
+            <c:forEach var="product" items="${listProduct}">
+                <tr>
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.price}</td>
+                    <td>${product.quantity}</td>
+                    
+                </tr>
+            </c:forEach>
+        </table>
+    </body>
+</html>
+
+
+
+
+
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Insert Product</title>
+    </head>
+    <body>
+        <form action="ProductServlet" method="post">
+            Name
+            <input type="text" name="name"><br><br>
+            
+           Price
+           <input type="text" name="price"><br><br>
+           
+           Quantity
+           <input type="text" name="quantity"><br><br>
+           
+           <input type="submit" value="Save">
+        </form>
+    </body>
+</html>
     }
 }
